@@ -11,11 +11,12 @@ const app = express()
 
 dotenv.config()
 app.use(cors())
+app.use(express.json())
 
 const port =  process.env.PORT||8000
 
 const url = process.env.DB_URL
-app.use(express.json())
+
 mongoose.connect(url,{
     useNewUrlParser: true,
     useUnifiedTopology: true
