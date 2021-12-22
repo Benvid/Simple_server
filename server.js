@@ -11,11 +11,12 @@ const app = express()
 
 dotenv.config()
 app.use(cors())
+app.use(express.json())
 
 const port =  process.env.PORT||8000
 
 const url = process.env.DB_URL
-app.use(express.json())
+
 mongoose.connect(url,{
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -31,14 +32,14 @@ app.get("/",(req,res)=>{
     res.send("Welcome to User Server API")
 })
 //Get all Todos rout
-app.get("/todos",async(req,res)=>{
-    const todo= await UserModel.find({});
+app.get("/Users",async(req,res)=>{
+    const User= await UserModel.find({});
 
-    if (todo){
+    if (User){
 
        return res.status(200).json({
             message:"Fetch all Users from database",
-            data: todo
+            data: User
         })
     }else{
        return res.status(400).json({
@@ -51,16 +52,17 @@ app.get("/todos",async(req,res)=>{
 
 //Create a new Todo into the database
 app.post("/create",async(req,res)=>{
-    const{title, description, isCompleted}=req.body
+    const{first_name, last_name,school,date_of_birth}=req.body
     const createUser = await UserModel.create({
-        title,
-        description,
-        isCompleted
+        first_name,
+        last_name,
+        school,
+        date_of_birth
     })
-    if(createTodo){
+    if(createUser){
         return res.status(200).json({
             message:"User created successfully",
-            data: createTodo
+            data: createUser
         
         })
     }else{

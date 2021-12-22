@@ -11,11 +11,11 @@ const UserSchema = Schema({
         type:String,
     },
     school:{
-        type:Boolean,
-        default:false
+        type:String,
+        
     },
     date_of_birth:{
-        type:Date,
+        type:String,
         
     }
 })
