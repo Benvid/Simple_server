@@ -22,6 +22,7 @@ mongoose.connect(url,{
     useUnifiedTopology: true
 
 }).then(()=>{
+    //successful connection message
     console.log("Database connected successfully")
 }).catch((error)=>{
     console.log(error)
@@ -31,7 +32,7 @@ mongoose.connect(url,{
 app.get("/",(req,res)=>{
     res.send("Welcome to User Server API")
 })
-//Get all Todos rout
+//Get all Users on database
 app.get("/Users",async(req,res)=>{
     const User= await UserModel.find({});
 
@@ -50,7 +51,7 @@ app.get("/Users",async(req,res)=>{
 })
 
 
-//Create a new Todo into the database
+//Create a new User into the database
 app.post("/create",async(req,res)=>{
     const{first_name, last_name,school,date_of_birth}=req.body
     const createUser = await UserModel.create({
