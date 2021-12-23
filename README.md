@@ -3,7 +3,7 @@
 # To view all users on the database the "Users" is added to the base link.
 # To create or add a new user the "create" is added to the base link.
 # Each user profile  has the following fields to be filled 
-first name,
-last name,
-school and 
-date of birth.
+# first name,
+# last name,
+# school and 
+# date of birth.
